@@ -1,6 +1,7 @@
 import pandas as pd
 from scipy.stats import skew, kurtosis
 
+
 # Original File Name
 old_path = '3-3File.csv'
 data = pd.read_csv(old_path)
@@ -13,6 +14,7 @@ pitch_type = 'ChangeUp'
 keep = [
     'Pitcher',
     'AutoPitchType',
+    'RelSpeed',
     'RelHeight',
     'Extension',
     'SpinRate',
