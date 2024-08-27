@@ -12,7 +12,7 @@ keep = [
 'Balls',
 'Strikes',
 'RelSpeed',
-'Tilt'
+'Tilt',
 'ExitSpeed',
 'Angle'
     ]
@@ -22,7 +22,7 @@ kept = data[keep]
 #desired new file path
 new_path = 'CleanedBaseball.csv'
 
-kept.to_csv(path,index=False)
+kept.to_csv(new_path,index=False)
 
 print(f"The data has been cleaned to {new_path}")
         
