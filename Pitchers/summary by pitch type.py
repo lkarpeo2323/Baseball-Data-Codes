@@ -14,6 +14,7 @@ pitch_type = 'ChangeUp'
 keep = [
     'Pitcher',
     'AutoPitchType',
+    'PitchCall',
     'RelSpeed',
     'RelHeight',
     'Extension',
@@ -24,7 +25,7 @@ keep = [
 ]
 
 #All number columns
-number = keep[2:]
+number = keep[3:]
 
 # Filter and keep relevant columns
 kept = data[keep]
@@ -50,3 +51,8 @@ print(kurt)
 
 print("\nSummary:")
 print(summary)
+
+
+call = filtered_data['PitchCall'].value_counts()
+print("\nPitchCall Counts:")
+print(call)
