@@ -24,7 +24,7 @@ keep = [
 ]
 
 #All number columns
-number = keep[3:]
+number = keep[2:]
 
 # Filter and keep relevant columns
 kept = data[keep]
