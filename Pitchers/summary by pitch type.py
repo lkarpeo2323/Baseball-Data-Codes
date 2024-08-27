@@ -7,8 +7,8 @@ old_path = '3-3File.csv'
 data = pd.read_csv(old_path)
 
 # Pitcher Name and Pitch Type
-pitcher_name = 'Colosimo, Dominic'
-pitch_type = 'ChangeUp'
+pitcher_name = 'Dudley, Chris'
+pitch_type = 'Fastball'
 
 # Columns to keep
 keep = [
@@ -39,11 +39,21 @@ skewness = filtered_data[number].apply(lambda x: skew(x.dropna()))
 kurt = filtered_data[number].apply(lambda x: kurtosis(x.dropna()))
 summary = filtered_data[number].describe()
 
+#Pitch Outcome
+call = filtered_data['PitchCall'].value_counts()
+
+#Pitch Usage
+usage_data = kept[kept['Pitcher'] == pitcher_name]
+usage = usage_data['AutoPitchType'].value_counts()
+
 pd.set_option('display.max_columns', None)  
 pd.set_option('display.width', None)
 
 # Print results
-print("Skewness:")
+print(f"{pitcher_name}")
+
+
+print("\nSkewness:")
 print(skewness)
 
 print("\nKurtosis:")
@@ -54,5 +64,12 @@ print(summary)
 
 
 call = filtered_data['PitchCall'].value_counts()
-print("\nPitchCall Counts:")
+print(f"\n{pitch_type} Results:")
 print(call)
+
+
+usage_data = kept[kept['Pitcher'] == pitcher_name]
+usage = usage_data['AutoPitchType'].value_counts()
+
+print("\nPitch Usage:")
+print(usage)
