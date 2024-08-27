@@ -38,6 +38,9 @@ skewness = filtered_data[number].apply(lambda x: skew(x.dropna()))
 kurt = filtered_data[number].apply(lambda x: kurtosis(x.dropna()))
 summary = filtered_data[number].describe()
 
+pd.set_option('display.max_columns', None)  
+pd.set_option('display.width', None)
+
 # Print results
 print("Skewness:")
 print(skewness)
