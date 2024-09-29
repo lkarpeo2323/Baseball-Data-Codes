@@ -20,8 +20,18 @@ master_df = pd.concat(dataframes, ignore_index=True)
 # Group and calculate the count of each result for each player (excluding Pitch Type)
 counts = master_df.groupby(['Player Name', 'Stretch/Windup', 'Task', 'Accomplished?']).size().unstack().fillna(0)
 
-# Save the counts as an Excel sheet
-output_path_counts = 'Hofstra_Result Counts.xlsx'
-counts.to_excel(output_path_counts)
+# Rename columns to match the desired output
+counts.rename(columns={'No': 'No', 'Not accomplished but a strike': 'Not accomplished but a strike', 'Yes': 'Yes'}, inplace=True)
 
-print(f"The summary of counts has been saved as '{output_path_counts}'.")
+# Calculate Attempts and Success Rate
+counts['Attempts'] = counts.sum(axis=1)
+counts['Success Rate 9/25 (Yes %)'] = (counts['Yes'] / counts['Attempts'] * 100).round(2)
+
+# Reset index to convert it to a column format
+result = counts.reset_index()
+
+# Save the result as an Excel sheet
+output_path_counts = 'Hofstra Pitching Summary.xlsx'
+result.to_excel(output_path_counts, index=False)
+
+print(f"The summary of counts with success rate has been saved as '{output_path_counts}'.")
