@@ -1,7 +1,7 @@
 import pandas as pd
 
 # Load the Excel workbook
-file_path = 'Hofstra Pitching Results.xlsx'
+file_path = 'Results.xlsx'
 xls = pd.ExcelFile(file_path)
 sheet_names = xls.sheet_names
 
@@ -21,7 +21,7 @@ master_df = pd.concat(dataframes, ignore_index=True)
 counts = master_df.groupby(['Player Name', 'Stretch/Windup', 'Task', 'Accomplished?']).size().unstack().fillna(0)
 
 # Save the counts as an Excel sheet
-output_path_counts = 'Hofstra_Pitching_Counts_No_Pitch_Type.xlsx'
+output_path_counts = 'Pitching_Counts_No_Pitch_Type.xlsx'
 counts.to_excel(output_path_counts)
 
 print(f"The summary of counts has been saved as '{output_path_counts}'.")
